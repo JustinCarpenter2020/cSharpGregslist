@@ -5,7 +5,7 @@ namespace cSharpGregslist.Models
 {
     public class Car
     {
-    public Car(string make, int model, int year, string description, string url)
+    public Car(string make, string model, int year, string description, string url)
     {
       Make = make;
       Model = model;
@@ -15,7 +15,7 @@ namespace cSharpGregslist.Models
     }
 
     public string Make { get; set; }
-        public int Model { get; set; }
+        public string Model { get; set; }
 
         public int Year { get; set; }
         public string Description { get; set; }

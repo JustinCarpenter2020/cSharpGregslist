@@ -8,18 +8,50 @@ namespace cSharpGregslist.Controllers
     [Route("api/[Controller]")]
     public class CarsController: ControllerBase
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<Car>> Get()
+         [HttpGet]
+    public ActionResult<IEnumerable<Car>> Get()
+    {
+     try
+     {
+         return Ok(FakeDB.Cars);
+     }
+     catch (System.Exception err)
+     {
+         
+         return BadRequest(err.Message);
+     }
+    }
+    [HttpPost]
+    public ActionResult<Car> Create([FromBody] Car newCar)
+    {
+        try
         {
-            try
-            {
-                return Ok(FakeDB.Cars);
-            }
-            catch (System.Exception err)
-            {
-                
-                return BadRequest(err.Message)
-            }
+            FakeDB.Cars.Add(newCar);
+            return Ok(newCar);
         }
+        catch (System.Exception err)
+        {
+            
+            return BadRequest(err.Message);
+        }
+    }
+    [HttpDelete("{carId}")]
+    public ActionResult<string> deleteCar(string carId)
+    {
+        try
+        {
+            Car carToDelete = FakeDB.Cars.Find(c => c.Id == carId);
+            if(FakeDB.Cars.Remove(carToDelete))
+            {
+                return Ok("Car has been deleted");
+            };
+            throw new System.Exception("This Car doesn't exist");
+        }
+        catch (System.Exception err)
+        {
+            
+            return BadRequest(err.Message);
+        }
+    }
     }
 }
