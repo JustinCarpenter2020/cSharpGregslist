@@ -22,6 +22,21 @@ namespace cSharpGregslist.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpPost]
+        public ActionResult<House> CreateHouse([FromBody] House newHouse)
+        {
+            try
+            {
+                FakeDB.Houses.Add(newHouse);
+                return Ok(newHouse);
+            }
+            catch (System.Exception err)
+            {
+                
+                return BadRequest(err.Message);
+            }
+        }
         
     }
 }
