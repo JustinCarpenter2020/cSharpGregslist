@@ -21,6 +21,7 @@ namespace cSharpGregslist.Controllers
          return BadRequest(err.Message);
      }
     }
+
     [HttpPost]
     public ActionResult<Car> Create([FromBody] Car newCar)
     {
@@ -35,6 +36,7 @@ namespace cSharpGregslist.Controllers
             return BadRequest(err.Message);
         }
     }
+
     [HttpDelete("{carId}")]
     public ActionResult<string> deleteCar(string carId)
     {
@@ -52,6 +54,20 @@ namespace cSharpGregslist.Controllers
             
             return BadRequest(err.Message);
         }
+    }
+
+    [HttpGet("{carId}")]
+    public ActionResult<Car> GetCarById(string carId)
+    {
+      try
+      {
+        Car carToReturn = FakeDB.Cars.Find(c => c.Id == carId);
+        return Ok(carToReturn);
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
     }
     }
 }
