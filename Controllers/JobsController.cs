@@ -36,6 +36,20 @@ namespace cSharpGregslist.Controllers
                 return BadRequest(err.Message);
             }
         }
+        [HttpGet("{jobId}")]
+        public ActionResult<Job> FindJobById(string jobId)
+        {
+           try
+           {
+                Job returnJob = FakeDB.Jobs.Find(j => j.Id == jobId);
+            return Ok(returnJob);
+           }
+           catch (System.Exception err)
+           {
+               
+               return BadRequest(err.Message);
+           }
+        }
 
 
 
