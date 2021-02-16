@@ -37,6 +37,21 @@ namespace cSharpGregslist.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet("{houseId}")]
+        public ActionResult<House> FindHouseById(string houseId)
+        {
+            try
+            {
+                House foundHouse = FakeDB.Houses.Find(h => h.Id == houseId);
+                return Ok(foundHouse);
+            }
+            catch (System.Exception err)
+            {
+                
+                return BadRequest(err.Message);
+            }
+        }
         
     }
 }
