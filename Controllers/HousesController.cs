@@ -52,6 +52,25 @@ namespace cSharpGregslist.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpDelete("{houseId}")]
+        public ActionResult<string> DeleteHouse(string houseId)
+        {
+            try
+            {
+                House houseToRemove = FakeDB.Houses.Find(h => h.Id == houseId);
+                if(FakeDB.Houses.Remove(houseToRemove))
+                {
+                    return Ok("Successfully deleted house");
+                }
+                throw new System.Exception("This house does not exist");
+            }
+            catch (System.Exception err)
+            {
+                
+                return BadRequest(err.Message);
+            }
+        }
         
     }
 }
