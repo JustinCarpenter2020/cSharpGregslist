@@ -28,6 +28,21 @@ namespace cSharpGregslist.Controllers
      }
     }
 
+    [HttpGet("{carId}")]
+    public ActionResult<Car> GetCarById(string carId)
+    {
+      try
+      {
+          //REVIEW why do it this way rather then what is in my house controller
+        Car foundCar = _cs.GetCarById(carId);
+        return Ok(foundCar);
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+
     [HttpPost]
     public ActionResult<Car> Create([FromBody] Car newCar)
     {
@@ -41,6 +56,22 @@ namespace cSharpGregslist.Controllers
             return BadRequest(err.Message);
         }
     }
+
+[HttpPut("{carId}")]
+public ActionResult<Car> editCar([FromBody] Car newCar, string carId)
+{
+    try
+    {
+        newCar.Id = carId;
+       Car updatedCar = _cs.editCar(newCar);
+       return Ok(updatedCar);
+    }
+    catch (System.Exception err)
+    {
+        
+        return BadRequest(err.Message);
+    }
+}
 
     [HttpDelete("{carId}")]
     public ActionResult<string> deleteCar(string carId)
@@ -57,35 +88,6 @@ namespace cSharpGregslist.Controllers
         }
     }
 
-    [HttpGet("{carId}")]
-    public ActionResult<Car> GetCarById(string carId)
-    {
-      try
-      {
-          //REVIEW why do it this way rather then what is in my house controller
-        Car foundCar = _cs.GetCarById(carId);
-        return Ok(foundCar);
-      }
-      catch (System.Exception err)
-      {
-        return BadRequest(err.Message);
-      }
-    }
-[HttpPut("{carId}")]
-public ActionResult<Car> editCar([FromBody] Car newCar, string carId)
-{
-    try
-    {
-        newCar.Id = carId;
-       Car updatedCar = _cs.editCar(newCar);
-       return Ok(updatedCar);
-    }
-    catch (System.Exception err)
-    {
-        
-        return BadRequest(err.Message);
-    }
-}
 
     }
 }
