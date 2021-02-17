@@ -2,6 +2,7 @@ using cSharpGregslist.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using cSharpGregslist.db;
+using cSharpGregslist.Services;
 
 namespace cSharpGregslist.Controllers
 {
@@ -9,6 +10,11 @@ namespace cSharpGregslist.Controllers
     [Route("api/[Controller]")]
     public class JobsController: ControllerBase
     {
+        private readonly JobsService _js;
+        public JobsController(JobsService js)
+        {
+            _js = js;
+        }
         [HttpGet]
         public ActionResult<IEnumerable<Job>> Get()
         {
