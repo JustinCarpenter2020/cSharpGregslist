@@ -54,6 +54,23 @@ namespace cSharpGregslist.Controllers
                return BadRequest(err.Message);
            }
         }
+        [HttpPut("{jobId}")]
+        public ActionResult<Job> EditJob([FromBody] Job newJob, string jobId)
+        {
+            try
+            {
+                newJob.Id = jobId;
+                return Ok(_js.EditJob(newJob));
+            }
+            catch (System.Exception err)
+            {
+                
+                return BadRequest(err.Message);
+            }
+        }
+
+
+
         [HttpDelete("{jobId}")]
         public ActionResult<string> DeleteJob(string jobId)
         {

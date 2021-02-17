@@ -27,6 +27,22 @@ namespace cSharpGregslist.Services
              throw new SystemException("This id is invalid");
          }
 
+          public Job EditJob(Job newJob)
+          {
+              Job jobToReturn = FakeDB.Jobs.Find(j => j.Id == newJob.Id);
+              if(jobToReturn != null)
+              {
+                  jobToReturn.Hours = newJob.Hours;
+                  jobToReturn.Description = newJob.Description;
+                  jobToReturn.Rate = newJob.Rate;
+                  jobToReturn.Company = newJob.Company;
+                  jobToReturn.JobTitle = newJob.JobTitle;
+                  return jobToReturn;
+
+              }
+               throw new SystemException("This id is invalid");
+          }
+
 
 
 
