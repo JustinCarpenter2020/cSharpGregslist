@@ -20,7 +20,7 @@ namespace cSharpGregslist.Controllers
         {
             try
             {
-                return Ok(FakeDB.Jobs);
+                return Ok(_js.Get());
             }
             catch (System.Exception err)
             {
