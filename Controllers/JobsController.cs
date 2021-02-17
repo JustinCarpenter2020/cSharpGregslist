@@ -76,13 +76,8 @@ namespace cSharpGregslist.Controllers
         {
             try
             {
-                Job jobToRemove = FakeDB.Jobs.Find(j => j.Id == jobId);
-                if(FakeDB.Jobs.Remove(jobToRemove))
-                {
-                    return Ok("Job has been deleted");
-
-                };
-                throw new System.Exception("This job does not exist");
+            _js.DeleteJob(jobId);
+            return Ok("Job successfully deleted");
             }
             catch (System.Exception err)
             {

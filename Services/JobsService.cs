@@ -43,6 +43,19 @@ namespace cSharpGregslist.Services
                throw new SystemException("This id is invalid");
           }
 
+            public string DeleteJob(string jobId)
+            {
+                Job jobToRemove = FakeDB.Jobs.Find(j => j.Id == jobId);
+                if(jobToRemove != null)
+               {
+                   FakeDB.Jobs.Remove(jobToRemove);
+                   return "Job Removed";
+
+               }
+               throw new SystemException("This id is invalid");
+
+            }
+
 
 
 
