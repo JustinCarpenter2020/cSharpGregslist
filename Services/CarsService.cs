@@ -17,6 +17,17 @@ namespace cSharpGregslist.Services
         return createdCar;
          }
 
+         public string deleteCar(string carId)
+         {
+             Car car = FakeDB.Cars.Find(c => c.Id == carId);
+             if(car != null)
+             {
+                 FakeDB.Cars.Remove(car);
+                 return("Deleted");
+             }
+             throw new SystemException("This id is invalid");
+         }
+
 
 
 

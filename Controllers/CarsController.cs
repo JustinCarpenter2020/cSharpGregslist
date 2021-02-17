@@ -48,12 +48,8 @@ namespace cSharpGregslist.Controllers
     {
         try
         {
-            Car carToDelete = FakeDB.Cars.Find(c => c.Id == carId);
-            if(FakeDB.Cars.Remove(carToDelete))
-            {
-                return Ok("Car has been deleted");
-            };
-            throw new System.Exception("This Car doesn't exist");
+            _cs.deleteCar(carId);
+            return Ok("Deleted");
         }
         catch (System.Exception err)
         {
