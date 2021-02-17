@@ -2,18 +2,24 @@ using cSharpGregslist.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using cSharpGregslist.db;
+using cSharpGregslist.Services;
 namespace cSharpGregslist.Controllers
 {
     [ApiController]
     [Route("api/[Controller]")]
     public class CarsController: ControllerBase
     {
+        private readonly CarsService _cs;
+          public CarsController(CarsService cs)
+    {
+      _cs = cs;
+    }
          [HttpGet]
     public ActionResult<IEnumerable<Car>> Get()
     {
      try
      {
-         return Ok(FakeDB.Cars);
+         return Ok(_cs.Get());
      }
      catch (System.Exception err)
      {
