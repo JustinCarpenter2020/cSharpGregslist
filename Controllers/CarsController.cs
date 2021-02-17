@@ -72,24 +72,13 @@ namespace cSharpGregslist.Controllers
       }
     }
 [HttpPut("{carId}")]
-public ActionResult<Car> editCar([FromBody] Car newCar)
+public ActionResult<Car> editCar([FromBody] Car newCar, string carId)
 {
     try
     {
-        Car returnCar = FakeDB.Cars.Find(c => c.Id == newCar.Id);
-        if(returnCar != null)
-        {
-        returnCar.Model = newCar.Model;
-        returnCar.Make = newCar.Make;
-        returnCar.Year = newCar.Year;
-        returnCar.Description = newCar.Description;
-        returnCar.Url = newCar.Url;
-        return returnCar;
-
-        } else
-        {
-            return NotFound();
-        }
+        newCar.Id = carId;
+       Car updatedCar = _cs.editCar(newCar);
+       return Ok(updatedCar);
     }
     catch (System.Exception err)
     {

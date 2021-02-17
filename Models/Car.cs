@@ -15,13 +15,19 @@ namespace cSharpGregslist.Models
       Price = price;
     }
 
+[Required]
     public string Make { get; set; }
+    [Required]
         public string Model { get; set; }
-
+        [Required]
         public int Year { get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public string Url { get; set; }
+        [Required]
         public int Price { get; set; }
+        [Required]
 
         public string Id { get; set; } = Guid.NewGuid().ToString();
     }
