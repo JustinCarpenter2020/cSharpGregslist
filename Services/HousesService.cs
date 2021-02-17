@@ -28,6 +28,23 @@ namespace cSharpGregslist.Services
              throw new SystemException("This id is invalid");
          }
 
+          public House EditHouse(House newHouse)
+          {
+              House returnHouse = FakeDB.Houses.Find(h => h.Id == newHouse.Id);
+              if(returnHouse != null)
+              {
+                  returnHouse.Bedrooms = newHouse.Bedrooms;
+                  returnHouse.Bathrooms = newHouse.Bathrooms;
+                  returnHouse.Year = newHouse.Year;
+                  returnHouse.Price = newHouse.Price;
+                  returnHouse.Levels = newHouse.Levels;
+                  returnHouse.Url = newHouse.Url;
+                  returnHouse.Description = newHouse.Description;
+                  return returnHouse;
+              }
+              throw new SystemException("This id is invalid");
+          }
+
           public string DeleteHouse(string houseId)
           {
               House houseToRemove = FakeDB.Houses.Find(h => h.Id == houseId);

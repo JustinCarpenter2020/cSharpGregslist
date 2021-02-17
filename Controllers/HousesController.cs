@@ -57,6 +57,21 @@ namespace cSharpGregslist.Controllers
             }
         }
 
+        [HttpPut("{houseId}")]
+        public ActionResult<House> EditHouse([FromBody] House newHouse, string houseId)
+        {
+            try
+            {
+                newHouse.Id = houseId;
+                return(_hs.EditHouse(newHouse));
+            }
+            catch (System.Exception err)
+            {
+                
+                return BadRequest(err.Message);
+            }
+        }
+
         [HttpDelete("{houseId}")]
         public ActionResult<string> DeleteHouse(string houseId)
         {
