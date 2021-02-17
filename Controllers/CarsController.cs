@@ -33,7 +33,7 @@ namespace cSharpGregslist.Controllers
     {
         try
         {
-            FakeDB.Cars.Add(newCar);
+            Car createdCar = _cs.Create(newCar);
             return Ok(newCar);
         }
         catch (System.Exception err)

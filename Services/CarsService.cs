@@ -11,6 +11,12 @@ namespace cSharpGregslist.Services
         {
             return FakeDB.Cars;
         }
+         public Car Create(Car createdCar)
+         {
+        FakeDB.Cars.Add(createdCar);
+        return createdCar;
+         }
+
 
 
 
