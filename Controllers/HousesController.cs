@@ -20,7 +20,7 @@ namespace cSharpGregslist.Controllers
         {
             try
             {
-                return Ok(FakeDB.Houses);
+                return Ok(_hs.Get());
             }
             catch (System.Exception err)
             {
