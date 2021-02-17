@@ -34,8 +34,7 @@ namespace cSharpGregslist.Controllers
         {
             try
             {
-                FakeDB.Houses.Add(newHouse);
-                return Ok(newHouse);
+                return Ok(_hs.CreateHouse(newHouse));
             }
             catch (System.Exception err)
             {

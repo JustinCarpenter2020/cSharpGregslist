@@ -11,5 +11,15 @@ namespace cSharpGregslist.Services
          {
              return FakeDB.Houses;
          }
+
+         public House CreateHouse(House newHouse)
+         {
+             FakeDB.Houses.Add(newHouse);
+                return newHouse;
+         }
+
+
+
+
     }
 }

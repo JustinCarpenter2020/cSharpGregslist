@@ -33,8 +33,7 @@ namespace cSharpGregslist.Controllers
     {
         try
         {
-            Car createdCar = _cs.Create(newCar);
-            return Ok(newCar);
+            return Ok(_cs.Create(newCar));
         }
         catch (System.Exception err)
         {
