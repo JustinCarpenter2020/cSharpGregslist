@@ -17,6 +17,16 @@ namespace cSharpGregslist.Services
              return newJob;
          }
 
+         public Job FindJobById(string jobId)
+         {
+             Job jobToReturn = FakeDB.Jobs.Find(j => j.Id == jobId);
+             if(jobToReturn != null)
+             {
+                 return jobToReturn;
+             }
+             throw new SystemException("This id is invalid");
+         }
+
 
 
 

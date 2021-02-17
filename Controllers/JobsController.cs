@@ -46,8 +46,7 @@ namespace cSharpGregslist.Controllers
         {
            try
            {
-                Job returnJob = FakeDB.Jobs.Find(j => j.Id == jobId);
-            return Ok(returnJob);
+            return Ok(_js.FindJobById(jobId));
            }
            catch (System.Exception err)
            {
