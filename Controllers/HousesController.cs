@@ -48,8 +48,7 @@ namespace cSharpGregslist.Controllers
         {
             try
             {
-                House foundHouse = FakeDB.Houses.Find(h => h.Id == houseId);
-                return Ok(foundHouse);
+                return Ok(_hs.FindHouseById(houseId));
             }
             catch (System.Exception err)
             {

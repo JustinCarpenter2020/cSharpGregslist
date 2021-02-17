@@ -18,6 +18,16 @@ namespace cSharpGregslist.Services
                 return newHouse;
          }
 
+         public House FindHouseById(string houseId)
+         {
+             House houseFound = FakeDB.Houses.Find(h => h.Id == houseId);
+             if(houseFound != null)
+             {
+                 return houseFound;
+             }
+             throw new SystemException("This id is invalid");
+         }
+
 
 
 
