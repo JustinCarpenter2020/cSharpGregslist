@@ -63,8 +63,8 @@ namespace cSharpGregslist.Controllers
     {
       try
       {
-        Car carToReturn = FakeDB.Cars.Find(c => c.Id == carId);
-        return Ok(carToReturn);
+        Car foundCar = _cs.GetCarById(carId);
+        return Ok(foundCar);
       }
       catch (System.Exception err)
       {

@@ -28,6 +28,16 @@ namespace cSharpGregslist.Services
              throw new SystemException("This id is invalid");
          }
 
+         public Car GetCarById(string carId)
+         {
+             Car foundCar = FakeDB.Cars.Find(c => c.Id == carId);
+             if(foundCar != null)
+             {
+                 return foundCar;
+             }
+              throw new SystemException("This id is invalid");
+         }
+
 
 
 
