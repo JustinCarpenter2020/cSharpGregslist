@@ -11,6 +11,12 @@ namespace cSharpGregslist.Services
              return FakeDB.Jobs;
          }
 
+         public Job Create(Job newJob)
+         {
+             FakeDB.Jobs.Add(newJob);
+             return newJob;
+         }
+
 
 
 

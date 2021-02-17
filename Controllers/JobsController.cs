@@ -33,8 +33,7 @@ namespace cSharpGregslist.Controllers
         {
             try
             {
-                FakeDB.Jobs.Add(newJob);
-                return Ok(newJob);
+                return Ok(_js.Create(newJob));
             }
             catch (System.Exception err)
             {
