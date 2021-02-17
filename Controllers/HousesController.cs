@@ -2,6 +2,7 @@ using cSharpGregslist.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using cSharpGregslist.db;
+using cSharpGregslist.Services;
 
 namespace cSharpGregslist.Controllers
 {
@@ -9,6 +10,11 @@ namespace cSharpGregslist.Controllers
     [Route("api/[Controller]")]
     public class HousesController: ControllerBase
     {
+        private readonly HousesService _hs;
+        public HousesController(HousesService hs)
+        {
+            _hs = hs;
+        }
         [HttpGet]
         public ActionResult<IEnumerable<House>> Get()
         {
